@@ -25,6 +25,14 @@
           <td>Delta Object</td>
           <td>{{timedelta}}</td>
         </tr>
+        <tr>
+          <td>$</td>
+          <td>{{cost}}</td>
+        </tr>
+        <tr>
+          <td>price/minute</td>
+          <td>{{pricePerMinute}}</td>
+        </tr>
         </tbody>
       </table>
 
@@ -35,7 +43,8 @@
 import moment from 'moment'
 import {
   PACK_AMOUNT,
-  PACK_PRICE
+  PACK_PRICE,
+  CIGARETTES_PER_DAY
 } from '../constants'
 import {
   getTimedeltaObject
@@ -47,6 +56,7 @@ export default {
     return {
       packAmount: PACK_AMOUNT,
       packPrice: PACK_PRICE,
+      cigarettesPerDay: CIGARETTES_PER_DAY,
       lastCigarette: moment('01-01-2016', 'MM-DD-YYYY')
     }
   },
@@ -56,6 +66,22 @@ export default {
     },
     now: function () {
       return moment()
+    },
+    cigarettePrice: function () {
+      return this.packPrice / this.packAmount
+    },
+    cigarettesPerHour: function () {
+      return this.cigarettesPerDay / 24
+    },
+    cigarettesPerMinute: function () {
+      return this.cigarettesPerHour / 60
+    },
+    pricePerMinute: function () {
+      return this.cigarettesPerMinute * this.cigarettePrice
+    },
+    cost: function () {
+      const diff = this.now.diff(this.lastCigarette, 'minutes')
+      return diff * this.pricePerMinute
     }
   },
   methods: {

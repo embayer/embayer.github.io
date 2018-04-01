@@ -1,7 +1,7 @@
 <template>
   <div id="index">
 
-      <table>
+      <table class="ui celled table">
         <thead>
         <tr>
           <th>Key</th>
@@ -10,7 +10,9 @@
         </thead>
         <tbody>
         <tr>
-          <td>Now</td>
+          <td>
+            <div class="ui ribbon label">Now</div>
+          </td>
           <td>{{now}}</td>
         </tr>
         <tr>

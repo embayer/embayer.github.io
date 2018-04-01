@@ -17,6 +17,7 @@
     "moment": "^2.22.0",
     "semantic-ui": "^2.3.1",
     "vue": "^2.5.2",
+    "vue-i18n": "^7.6.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

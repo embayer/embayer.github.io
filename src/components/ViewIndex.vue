@@ -1,8 +1,7 @@
 <template>
   <div id="index">
 
-    <div id="form-container">
-
+    <div id="form-container" class="container">
       <form class="ui form">
         <div class="field">
           <label>{{ $t('form.label.cigarettesPerDay') }}</label>
@@ -22,10 +21,10 @@
         </div>
         <button class="ui button" type="submit">{{ $t('form.submit') }}</button>
       </form>
-
     </div>
 
-    <table class="ui celled table">
+    <div id="table-container" class="container">
+      <table class="ui celled table">
         <thead>
         <tr>
           <th>Key</th>
@@ -59,6 +58,11 @@
         </tr>
         </tbody>
       </table>
+    </div>
+
+    <div id="cigarettes-table-container" class="container">
+      <cigarettes-table :cigarettes="cigarettes" :days="days" :cigarettes-per-day="formCigarettesPerDay"></cigarettes-table>
+    </div>
 
   </div>
 </template>
@@ -73,11 +77,14 @@ import {
 import {
   getTimedeltaObject
 } from '../functions'
+import CigarettesTable from './CigaretteTable'
 
 export default {
   name: 'ViewIndex',
+  components: {CigarettesTable},
   data () {
     return {
+      // TODO rm defaults
       formPackAmount: PACK_AMOUNT,
       formPackPrice: PACK_PRICE,
       formCigarettesPerDay: CIGARETTES_PER_DAY,
@@ -99,15 +106,23 @@ export default {
     cigarettePrice: function () {
       return this.formPackPrice / this.formPackAmount
     },
+    cigarettes: function () {
+      return this.cigarettesPerMinute * this.minutes
+    },
     cigarettesPerMinute: function () {
       return this.formCigarettesPerDay / (24 * 60)
     },
     pricePerMinute: function () {
       return this.cigarettesPerMinute * this.cigarettePrice
     },
+    days: function () {
+      return this.now.diff(this.lastCigarette, 'days')
+    },
+    minutes: function () {
+      return this.now.diff(this.lastCigarette, 'minutes')
+    },
     cost: function () {
-      const diff = this.now.diff(this.lastCigarette, 'minutes')
-      return diff * this.pricePerMinute
+      return this.minutes * this.pricePerMinute
     }
   },
   methods: {

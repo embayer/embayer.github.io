@@ -1,6 +1,30 @@
 <template>
   <div id="index">
 
+    <div id="form-container">
+
+      <form class="ui form">
+        <div class="field">
+          <label>{{ $t('form.label.cigarettesPerDay') }}</label>
+          <input v-model="formCigarettesPerDay" type="number" name="cigarettes-per-day" :placeholder="$t('form.placeholder.cigarettesPerDay')">
+        </div>
+        <div class="field">
+          <label>{{ $t('form.label.packPrice') }}</label>
+          <input v-model="formPackPrice" type="number" name="pack-price" :placeholder="$t('form.placeholder.packPrice')">
+        </div>
+        <div class="field">
+          <label>{{ $t('form.label.packAmount') }}</label>
+          <input v-model="formPackAmount" type="number" name="pack-amount" :placeholder="$t('form.placeholder.packAmount')">
+        </div>
+        <div class="field">
+          <label>{{ $t('form.label.lastCigarette') }}</label>
+          <input v-model="formLastCigarette" type="text" name="last-cigarette" :placeholder="$t('form.placeholder.lastCigarette')">
+        </div>
+        <button class="ui button" type="submit">{{ $t('form.submit') }}</button>
+      </form>
+
+    </div>
+
     <table class="ui celled table">
         <thead>
         <tr>
@@ -18,14 +42,6 @@
         <tr>
           <td>last cigarette</td>
           <td>{{ lastCigarette | formatDate }}</td>
-        </tr>
-        <tr>
-          <td>pack amount</td>
-          <td>{{ packAmount }}</td>
-        </tr>
-        <tr>
-          <td>pack price</td>
-          <td>{{ packPrice }}</td>
         </tr>
         <tr>
           <td>Delta Object</td>
@@ -62,24 +78,29 @@ export default {
   name: 'ViewIndex',
   data () {
     return {
-      packAmount: PACK_AMOUNT,
-      packPrice: PACK_PRICE,
-      cigarettesPerDay: CIGARETTES_PER_DAY,
-      lastCigarette: moment('11-01-2016', 'MM-DD-YYYY')
+      formPackAmount: PACK_AMOUNT,
+      formPackPrice: PACK_PRICE,
+      formCigarettesPerDay: CIGARETTES_PER_DAY,
+      formLastCigarette: moment().format('YYYY-MM-DD HH:mm')
     }
   },
   computed: {
     now: function () {
       return moment()
     },
+    lastCigarette: function () {
+      // TODO rm debugging code
+      return moment('2013-01-22 13:37', 'YYYY-MM-DD HH:mm')
+      // return moment(this.formLastCigarette, 'YYYY-MM-DD HH:mm')
+    },
     timedelta: function () {
       return getTimedeltaObject(this.lastCigarette, this.now)
     },
     cigarettePrice: function () {
-      return this.packPrice / this.packAmount
+      return this.formPackPrice / this.formPackAmount
     },
     cigarettesPerMinute: function () {
-      return this.cigarettesPerDay / (24 * 60)
+      return this.formCigarettesPerDay / (24 * 60)
     },
     pricePerMinute: function () {
       return this.cigarettesPerMinute * this.cigarettePrice

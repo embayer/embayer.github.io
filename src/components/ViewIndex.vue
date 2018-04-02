@@ -63,20 +63,17 @@ export default {
     }
   },
   computed: {
-    timedelta: function () {
-      return getTimedeltaObject(this.lastCigarette, this.now)
-    },
     now: function () {
       return moment()
+    },
+    timedelta: function () {
+      return getTimedeltaObject(this.lastCigarette, this.now)
     },
     cigarettePrice: function () {
       return this.packPrice / this.packAmount
     },
-    cigarettesPerHour: function () {
-      return this.cigarettesPerDay / 24
-    },
     cigarettesPerMinute: function () {
-      return this.cigarettesPerHour / 60
+      return this.cigarettesPerDay / (24 * 60)
     },
     pricePerMinute: function () {
       return this.cigarettesPerMinute * this.cigarettePrice

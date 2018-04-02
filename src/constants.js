@@ -3,14 +3,16 @@ export const PACK_PRICE = 6.20
 export const CIGARETTES_PER_DAY = 15
 
 // Ready translated locale messages
-export const strings = {
+export const messages = {
   en: {
-    message: {
+    msg: {
+      timedelta: `{y} years, {M} months, {d} days, {h} hours, {m} minutes.`,
       hello: 'hello world'
     }
   },
   de: {
-    message: {
+    msg: {
+      timedelta: `{y} years, {M} months, {d} days, {h} hours, {m} minutes.`,
       hello: 'grieß di'
     }
   }

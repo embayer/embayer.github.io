@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueI18n from 'vue-i18n'
-import {strings} from './constants'
+import {messages} from './constants'
 
 Vue.use(VueI18n)
 
@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 // Create VueI18n instance with options
 const i18n = new VueI18n({
   locale: 'de', // set locale
-  strings // set locale messages
+  messages // set locale messages
 })
 
 // Create a Vue instance with `i18n` option

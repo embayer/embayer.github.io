@@ -1,7 +1,7 @@
 <template>
   <div id="index">
 
-      <table class="ui celled table">
+    <table class="ui celled table">
         <thead>
         <tr>
           <th>Key</th>
@@ -13,27 +13,33 @@
           <td>
             <div class="ui ribbon label">Now</div>
           </td>
-          <td>{{now}}</td>
+          <td>{{ now }}</td>
+        </tr>
+        <tr>
+          <td>last cigarette</td>
+          <td>{{ lastCigarette | formatDate }}</td>
         </tr>
         <tr>
           <td>pack amount</td>
-          <td>{{packAmount}}</td>
+          <td>{{ packAmount }}</td>
         </tr>
         <tr>
           <td>pack price</td>
-          <td>{{packPrice}}</td>
+          <td>{{ packPrice }}</td>
         </tr>
         <tr>
           <td>Delta Object</td>
-          <td>{{timedelta}}</td>
+          <td>
+            {{ $t('msg.timedelta', timedelta) }}
+          </td>
         </tr>
         <tr>
           <td>$</td>
-          <td>{{cost}}</td>
+          <td>{{ cost }}</td>
         </tr>
         <tr>
           <td>price/minute</td>
-          <td>{{pricePerMinute}}</td>
+          <td>{{ pricePerMinute }}</td>
         </tr>
         </tbody>
       </table>
@@ -59,7 +65,7 @@ export default {
       packAmount: PACK_AMOUNT,
       packPrice: PACK_PRICE,
       cigarettesPerDay: CIGARETTES_PER_DAY,
-      lastCigarette: moment('01-01-2016', 'MM-DD-YYYY')
+      lastCigarette: moment('11-01-2016', 'MM-DD-YYYY')
     }
   },
   computed: {
@@ -84,6 +90,11 @@ export default {
     }
   },
   methods: {
+  },
+  filters: {
+    formatDate: function (value) {
+      return value.format('DD.MM.YYYY mm:HH')
+    }
   }
 }
 </script>

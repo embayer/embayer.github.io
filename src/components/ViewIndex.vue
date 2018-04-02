@@ -72,7 +72,7 @@ import {
 } from '../constants'
 import {
   getTimedeltaObject
-} from './functions'
+} from '../functions'
 
 export default {
   name: 'ViewIndex',

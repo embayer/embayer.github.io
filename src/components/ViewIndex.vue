@@ -61,7 +61,7 @@
     </div>
 
     <div id="cigarettes-table-container" class="container">
-      <cigarettes-table :cigarettes="cigarettes" :days="days" :cigarettes-per-day="formCigarettesPerDay"></cigarettes-table>
+      <cigarettes-table :cigarettes="cigarettes" :days="days" :cigarettes-per-day="parseInt(formCigarettesPerDay)"></cigarettes-table>
     </div>
 
   </div>

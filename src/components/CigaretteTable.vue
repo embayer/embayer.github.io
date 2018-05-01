@@ -16,6 +16,7 @@ Visualizes the not smoked Cigarettes.
         <td>{{ day }}</td>
         <td>
           <span v-for="c in cigarettesPerDay">{{ emojiCigarette }}</span>
+          <!-- TODO last day -->
         </td>
       </tr>
       </tbody>
@@ -25,9 +26,9 @@ Visualizes the not smoked Cigarettes.
 </template>
 
 <script>
-  import {EMOJI_CIGARETTE} from '../constants'
+import {EMOJI_CIGARETTE} from '../constants'
 
-  export default {
+export default {
   name: 'cigarettes-table',
   props: {
     cigarettes: {

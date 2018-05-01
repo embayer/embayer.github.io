@@ -2,9 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+// import router from './router'
 import VueI18n from 'vue-i18n'
 import {messages} from './constants'
+import router from './router/index'
 
 Vue.use(VueI18n)
 

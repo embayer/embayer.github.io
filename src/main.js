@@ -27,6 +27,7 @@ new Vue({
   i18n,
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 }).$mount('#app')

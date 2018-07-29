@@ -1,6 +1,8 @@
 <template>
   <div id="index">
 
+    <data-form></data-form>
+
     <div id="form-container" class="container">
       <form class="ui form">
         <div class="field">
@@ -60,9 +62,9 @@
       </table>
     </div>
 
-    <div id="cigarettes-table-container" class="container">
-      <cigarettes-table :cigarettes="cigarettes" :days="days" :cigarettes-per-day="parseInt(formCigarettesPerDay)"></cigarettes-table>
-    </div>
+    <!--<div id="cigarettes-table-container" class="container">-->
+      <!--<cigarettes-table :cigarettes="cigarettes" :days="days" :cigarettes-per-day="parseInt(formCigarettesPerDay)"></cigarettes-table>-->
+    <!--</div>-->
 
   </div>
 </template>
@@ -77,11 +79,13 @@ import {
 import {
   getTimedeltaObject
 } from '../functions'
-import CigarettesTable from './CigaretteTable'
+import DataForm from './DataForm'
 
 export default {
   name: 'ViewIndex',
-  components: {CigarettesTable},
+  components: {
+    DataForm
+  },
   data () {
     return {
       // TODO rm defaults

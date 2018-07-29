@@ -9,10 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'ViewIndex',
-      component: ViewIndex,
-      props: (route) => ({
-        lastCigarette: route.query.lastCigarette
-      })
+      component: ViewIndex
     }
   ]
 })

@@ -21,4 +21,5 @@ semantic/
 *.sln
 
 # project files
+TEMPLATE.vue
 project.org

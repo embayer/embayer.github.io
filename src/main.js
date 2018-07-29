@@ -6,7 +6,12 @@ import App from './App'
 import VueI18n from 'vue-i18n'
 import {messages} from './constants'
 import router from './router/index'
+import {store} from './store'
+import Vuex from 'vuex'
+// required by Vuex
+import 'es6-promise/auto'
 
+Vue.use(Vuex)
 Vue.use(VueI18n)
 
 Vue.config.productionTip = false
